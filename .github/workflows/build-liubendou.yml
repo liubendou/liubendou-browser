@@ -53,9 +53,11 @@ jobs:
           'dist/六本豆.app/Contents/MacOS/Liubendou' device list > /dev/null
       - name: Package app
         run: |
-          cd dist
-          ditto -c -k --sequesterRsrc --keepParent '六本豆.app' '六本豆-v1.5.0-macOS-arm64.zip'
-          shasum -a 256 '六本豆-v1.5.0-macOS-arm64.zip' > '六本豆-v1.5.0-macOS-arm64.zip.sha256'
+          python3 scripts/package-app.py
+          mkdir dist/verify-extraction
+          ditto -x -k 'dist/六本豆-v1.5.0-macOS-arm64.zip' dist/verify-extraction
+          codesign --verify --deep --strict 'dist/verify-extraction/六本豆.app'
+          python3 scripts/verify-branding.py 'dist/verify-extraction/六本豆.app'
       - name: Upload app
         uses: actions/upload-artifact@v4
         with:
