@@ -59,7 +59,7 @@ func drawCentered(_ text: String, y: CGFloat, fontSize: CGFloat, weight: NSFont.
     string.draw(at: CGPoint(x: (1024 - measured.width) / 2, y: y), withAttributes: attributes)
 }
 drawCentered("六", y: 335, fontSize: 390, weight: .semibold)
-drawCentered("六本豆", y: 190, fontSize: 86, weight: .medium)
+drawCentered("六本豆", y: 125, fontSize: 86, weight: .medium)
 cg.restoreGState()
 NSGraphicsContext.restoreGraphicsState()
 let png = bitmap.representation(using: .png, properties: [:])!
