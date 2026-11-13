@@ -9,8 +9,8 @@ import Darwin
 /// 不把下载源 URL 写进系统全局的 `QuarantineEventsV2` 数据库，避免隔离环境或临时环境的浏览地址落入宿主机全局记录。
 public enum DownloadQuarantine {
     public static let xattrName = "com.apple.quarantine"
-    public static let defaultAgentName = "Safarier"
-    public static let defaultBundleIdentifier = "sh.safarier.app"
+    public static let defaultAgentName = "六本豆"
+    public static let defaultBundleIdentifier = "com.liubendou.browser"
 
     @discardableResult
     public static func apply(

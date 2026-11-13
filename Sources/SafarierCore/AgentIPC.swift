@@ -371,12 +371,12 @@ public enum AgentIPCClient {
 }
 
 public enum AgentSkillGuide {
-    /// Idempotently synchronize only Safarier's guide, preserving other installed skills.
+    /// Idempotently synchronize only 六本豆's guide, preserving other installed skills.
     @discardableResult
     public static func install(homeDirectory: URL = FileManager.default.homeDirectoryForCurrentUser) throws -> [URL] {
         let data = Data(markdown.utf8)
         let targets = [".claude", ".claude-ifrr", ".agents"].map {
-            homeDirectory.appendingPathComponent("\($0)/skills/safarier-browser/SKILL.md")
+            homeDirectory.appendingPathComponent("\($0)/skills/liubendou-browser/SKILL.md")
         }
         for target in targets {
             if (try? Data(contentsOf: target)) == data { continue }
@@ -388,20 +388,20 @@ public enum AgentSkillGuide {
 
     public static let markdown = #"""
     ---
-    name: safarier-browser
-    description: Control Safarier browser profiles through its local CLI for authorized browsing, form testing, snapshots, screenshots and human-assisted workflows. Use when a task needs Safarier profile storage or proxy isolation.
+    name: liubendou-browser
+    description: Control 六本豆 browser profiles through its local CLI for authorized browsing, form testing, snapshots, screenshots and human-assisted workflows. Use when a task needs 六本豆 profile storage or proxy isolation.
     ---
 
-    # Safarier browser automation
+    # 六本豆 browser automation
 
     Use the installed executable, even when `safarier` is absent from PATH:
 
     ```sh
-    SF=/Applications/Safarier.app/Contents/MacOS/Safarier
+    SF=/Applications/六本豆.app/Contents/MacOS/Liubendou
     "$SF" agent spaces
     ```
 
-    In interactive shells, `alias safarier='/Applications/Safarier.app/Contents/MacOS/Safarier'` is optional. For a custom installation, use that app's executable path instead. CLI syntax below assumes the `SF` variable above.
+    In interactive shells, `alias safarier='/Applications/六本豆.app/Contents/MacOS/Liubendou'` is optional. For a custom installation, use that app's executable path instead. CLI syntax below assumes the `SF` variable above.
 
     ## Workflow
 
@@ -472,7 +472,7 @@ public enum AgentSkillGuide {
 
     Commands accepting `--tab N` use 1-based indices; re-list after closing a tab. Different profiles can run concurrently; serialize dependent commands within a tab. Local sockets are owner-only (directory 0700, socket 0600); processes under the same macOS account can control that profile. Snapshots and screenshots may contain personal information. Avoid embedding secrets in shell history or persisted logs.
 
-    Opening the Safarier manager synchronizes this guide to `.claude/skills`, `.claude-ifrr/skills` and `.agents/skills` under the user's home directory. Restart or reload your agent's skill discovery if needed. Other clients, including Cursor and OpenCode, may require importing the guide through their own supported configuration.
+    Opening the 六本豆 manager synchronizes this guide to `.claude/skills`, `.claude-ifrr/skills` and `.agents/skills` under the user's home directory. Restart or reload your agent's skill discovery if needed. Other clients, including Cursor and OpenCode, may require importing the guide through their own supported configuration.
 
     [safarier:skill] end of guide
     """#

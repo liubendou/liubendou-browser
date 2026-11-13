@@ -8,7 +8,7 @@ public enum MieruError: Error, LocalizedError {
 
     public var errorDescription: String? {
         switch self {
-        case .executableNotFound: return L10n.text("找不到 Mieru。请使用包含 Mieru 的新版 Safarier，或用 SAFARIER_MIERU 指定可执行文件。")
+        case .executableNotFound: return L10n.text("找不到 Mieru。请使用包含 Mieru 的新版 六本豆，或用 SAFARIER_MIERU 指定可执行文件。")
         case .invalidNode: return L10n.text("Mieru 节点参数无效，请检查用户名、密码、传输和多路复用设置。")
         }
     }

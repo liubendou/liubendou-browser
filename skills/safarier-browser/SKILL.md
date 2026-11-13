@@ -1,18 +1,18 @@
 ---
-name: safarier-browser
-description: Control Safarier browser profiles through its local CLI for authorized browsing, form testing, snapshots, screenshots and human-assisted workflows. Use when a task needs Safarier profile storage or proxy isolation.
+name: liubendou-browser
+description: Control 六本豆 browser profiles through its local CLI for authorized browsing, form testing, snapshots, screenshots and human-assisted workflows. Use when a task needs 六本豆 profile storage or proxy isolation.
 ---
 
-# Safarier browser automation
+# 六本豆 browser automation
 
 Use the installed executable, even when `safarier` is absent from PATH:
 
 ```sh
-SF=/Applications/Safarier.app/Contents/MacOS/Safarier
+SF=/Applications/六本豆.app/Contents/MacOS/Liubendou
 "$SF" agent spaces
 ```
 
-In interactive shells, `alias safarier='/Applications/Safarier.app/Contents/MacOS/Safarier'` is optional. For a custom installation, use that app's executable path instead. CLI syntax below assumes the `SF` variable above.
+In interactive shells, `alias safarier='/Applications/六本豆.app/Contents/MacOS/Liubendou'` is optional. For a custom installation, use that app's executable path instead. CLI syntax below assumes the `SF` variable above.
 
 ## Workflow
 
@@ -83,6 +83,6 @@ If a CAPTCHA, passkey confirmation, consent prompt or other human-verification s
 
 Commands accepting `--tab N` use 1-based indices; re-list after closing a tab. Different profiles can run concurrently; serialize dependent commands within a tab. Local sockets are owner-only (directory 0700, socket 0600); processes under the same macOS account can control that profile. Snapshots and screenshots may contain personal information. Avoid embedding secrets in shell history or persisted logs.
 
-Opening the Safarier manager synchronizes this guide to `.claude/skills`, `.claude-ifrr/skills` and `.agents/skills` under the user's home directory. Restart or reload your agent's skill discovery if needed. Other clients, including Cursor and OpenCode, may require importing the guide through their own supported configuration.
+Opening the 六本豆 manager synchronizes this guide to `.claude/skills`, `.claude-ifrr/skills` and `.agents/skills` under the user's home directory. Restart or reload your agent's skill discovery if needed. Other clients, including Cursor and OpenCode, may require importing the guide through their own supported configuration.
 
 [safarier:skill] end of guide

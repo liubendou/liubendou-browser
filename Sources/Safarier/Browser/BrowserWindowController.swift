@@ -441,7 +441,7 @@ final class BrowserWindowController: NSObject, NSWindowDelegate, NSToolbarDelega
 
     private func presentExtensionMessage(_ text: String) {
         let alert = NSAlert()
-        alert.messageText = L10n.text("Safarier 扩展")
+        alert.messageText = L10n.text("六本豆 扩展")
         alert.informativeText = text
         alert.addButton(withTitle: L10n.text("好"))
         alert.beginSheetModal(for: window)

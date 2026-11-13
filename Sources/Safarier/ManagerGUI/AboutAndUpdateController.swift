@@ -11,7 +11,7 @@ enum AboutAndUpdateController {
         case browser
     }
 
-    static let fallbackVersion = "1.2.4"
+    static let fallbackVersion = "1.5.0"
     static let notesLimit = 600
 
     static var currentVersion: String {
@@ -23,7 +23,7 @@ enum AboutAndUpdateController {
     }
 
     static var versionLine: String {
-        "Safarier v\(currentVersion)" + (buildNumber.map { " (Build \($0))" } ?? "")
+        "六本豆 v\(currentVersion)" + (buildNumber.map { " (Build \($0))" } ?? "")
     }
 
     static func openGitHub() { NSWorkspace.shared.open(UpdateChecker.repositoryURL) }
@@ -124,7 +124,7 @@ enum AboutAndUpdateController {
             case .checksumDownloadFailed: return L10n.text("无法获取 SHA-256 校验文件，已放弃安装")
             case .downloadFailed(let code): return L10n.text("下载失败（HTTP %lld）", code)
             case .commandFailed(let tool, let detail): return L10n.text("%@ 执行失败：%@", tool, detail)
-            case .appMissing: return L10n.text("更新包里没有 Safarier.app")
+            case .appMissing: return L10n.text("更新包里没有 六本豆.app")
             }
         }
     }
@@ -165,7 +165,7 @@ enum AboutAndUpdateController {
         let extracted = workDir.appendingPathComponent("extracted", isDirectory: true)
         try FileManager.default.createDirectory(at: extracted, withIntermediateDirectories: false)
         try await run("/usr/bin/ditto", ["-x", "-k", zipURL.path, extracted.path])
-        let newApp = extracted.appendingPathComponent("Safarier.app", isDirectory: true)
+        let newApp = extracted.appendingPathComponent("六本豆.app", isDirectory: true)
         guard FileManager.default.fileExists(atPath: newApp.path) else { throw InstallError.appMissing }
         // Archives may preserve read-only resource files, which prevents xattr removal.
         try await run("/bin/chmod", ["-R", "u+w", newApp.path])
@@ -175,9 +175,9 @@ enum AboutAndUpdateController {
         onProgress?(L10n.text("正在替换并重启…"))
         let target = Bundle.main.bundleURL.pathExtension == "app"
             ? Bundle.main.bundleURL
-            : URL(fileURLWithPath: "/Applications/Safarier.app", isDirectory: true)
+            : URL(fileURLWithPath: "/Applications/六本豆.app", isDirectory: true)
         // 先在同一目录里摆好新包再原子替换，中途失败不会丢掉旧版本。
-        let staged = target.deletingLastPathComponent().appendingPathComponent(".Safarier-update-\(UUID().uuidString).app", isDirectory: true)
+        let staged = target.deletingLastPathComponent().appendingPathComponent(".六本豆-update-\(UUID().uuidString).app", isDirectory: true)
         try FileManager.default.copyItem(at: newApp, to: staged)
         do {
             _ = try FileManager.default.replaceItemAt(target, withItemAt: staged)
@@ -195,7 +195,7 @@ enum AboutAndUpdateController {
 
     private static func download(_ url: URL, session: URLSession) async throws -> Data {
         var request = URLRequest(url: url, timeoutInterval: 120)
-        request.setValue("Safarier/\(currentVersion)", forHTTPHeaderField: "User-Agent")
+        request.setValue("Liubendou/\(currentVersion)", forHTTPHeaderField: "User-Agent")
         let (data, response) = try await session.data(for: request)
         if let http = response as? HTTPURLResponse, http.statusCode != 200 { throw InstallError.downloadFailed(http.statusCode) }
         return data

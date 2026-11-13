@@ -74,7 +74,7 @@ enum UILanguage {
             Task { @MainActor in
                 guard error == nil else {
                     let alert = NSAlert()
-                    alert.messageText = L10n.text("无法重新启动 Safarier")
+                    alert.messageText = L10n.text("无法重新启动 六本豆")
                     alert.informativeText = L10n.text("语言设置已保存，下次启动时生效。")
                     alert.addButton(withTitle: L10n.text("好"))
                     alert.runModal()

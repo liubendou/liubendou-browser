@@ -11,15 +11,15 @@ enum BrowserMenu {
     static func make() -> NSMenu {
         let main = NSMenu()
 
-        main.addItem(submenu("Safarier", [
-            item("关于 Safarier", #selector(BrowserActions.showAbout(_:))),
+        main.addItem(submenu("六本豆", [
+            item("关于 六本豆", #selector(BrowserActions.showAbout(_:))),
             item("检查更新…", #selector(BrowserActions.checkForUpdates(_:))),
             .separator(),
-            item("隐藏 Safarier", #selector(NSApplication.hide(_:)), "h"),
+            item("隐藏 六本豆", #selector(NSApplication.hide(_:)), "h"),
             item("隐藏其他", #selector(NSApplication.hideOtherApplications(_:)), "h", [.command, .option]),
             item("全部显示", #selector(NSApplication.unhideAllApplications(_:))),
             .separator(),
-            item("退出 Safarier", #selector(NSApplication.terminate(_:)), "q"),
+            item("退出 六本豆", #selector(NSApplication.terminate(_:)), "q"),
         ]))
 
         main.addItem(submenu("文件", [
@@ -146,7 +146,7 @@ enum BrowserMenu {
         NSApp.windowsMenu = windowMenu
 
         let helpItem = submenu("帮助", [
-            item("Safarier GitHub 主页", #selector(BrowserActions.openGitHub(_:))),
+            item("六本豆 GitHub 主页", #selector(BrowserActions.openGitHub(_:))),
             item("检查更新…", #selector(BrowserActions.checkForUpdates(_:))),
         ])
         main.addItem(helpItem)

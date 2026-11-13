@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 编出 Universal（arm64 + x86_64）release 二进制，组装 dist/Safarier.app 并做本机 ad-hoc 签名。
+# 编出 Universal（arm64 + x86_64）release 二进制，组装 dist/六本豆.app 并做本机 ad-hoc 签名。
 # Apple 芯片和 Intel 的 Mac 都能用。只在 Mac mini 上跑（需要 Xcode 工具链：多架构 swift build 和 lipo）。
 # 环境变量：SAFARIER_VERSION 覆盖版本号（默认 1.5.0），SAFARIER_BUILD 覆盖构建号（默认 git 提交数），
 #           SINGBOX_DIR 覆盖自带 sing-box 的目录（默认 .build/sing-box，由 scripts/build-singbox.sh 在编译机上编出来）。
@@ -10,9 +10,9 @@ cd "$(dirname "$0")/.."
 ROOT="$PWD"
 VERSION="${SAFARIER_VERSION:-1.5.0}"
 BUILD="${SAFARIER_BUILD:-$(git rev-list --count HEAD 2>/dev/null || echo 1)}"
-TARGET_ARCH="${SAFARIER_ARCH:-universal}"
-BUNDLE_ID="sh.safarier.app"
-APP="${SAFARIER_APP_OUT:-$ROOT/dist/Safarier.app}"
+TARGET_ARCH="${SAFARIER_ARCH:-arm64}"
+BUNDLE_ID="com.liubendou.browser"
+APP="${SAFARIER_APP_OUT:-$ROOT/dist/六本豆.app}"
 SINGBOX_DIR="${SINGBOX_DIR:-$ROOT/.build/sing-box}"
 MIERU_DIR="${MIERU_DIR:-$ROOT/.build/mieru}"
 
@@ -39,9 +39,9 @@ write_info_plist() {
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh-Hans</string>
 	<key>CFBundleDisplayName</key>
-	<string>Safarier</string>
+	<string>六本豆</string>
 	<key>CFBundleExecutable</key>
-	<string>Safarier</string>
+	<string>Liubendou</string>
 	<key>CFBundleIconFile</key>
 	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
@@ -53,7 +53,7 @@ write_info_plist() {
 $(printf '\t\t<string>%s</string>\n' "${LOCALIZATIONS[@]}")
 	</array>
 	<key>CFBundleName</key>
-	<string>Safarier</string>
+	<string>六本豆</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -65,13 +65,13 @@ $(printf '\t\t<string>%s</string>\n' "${LOCALIZATIONS[@]}")
 	<key>LSMinimumSystemVersion</key>
 	<string>14.0</string>
 	<key>NSCameraUsageDescription</key>
-	<string>网页请求使用摄像头时（例如视频会议），Safarier 会先询问你。</string>
+	<string>网页请求使用摄像头时（例如视频会议），六本豆 会先询问你。</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>网页请求使用麦克风时（例如视频会议），Safarier 会先询问你。</string>
+	<string>网页请求使用麦克风时（例如视频会议），六本豆 会先询问你。</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Safarier</string>
+	<string>六本豆</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSSupportsAutomaticTermination</key>
@@ -90,79 +90,50 @@ if [ "${1:-}" = "--info-plist" ]; then
   exit 0
 fi
 
-ARCHS_EXPECTED="arm64 x86_64"
-
-# lipo -archs 的输出同时有 arm64 和 x86_64。
 is_universal() {
   local archs
   archs=" $(lipo -archs "$1" 2>/dev/null || true) "
   [[ "$archs" == *" arm64 "* && "$archs" == *" x86_64 "* ]]
 }
 
-# 编译机交回的是两个单架构切片（Linux 上没有 lipo），在这里合并成 Universal。
-if ! { [ -f "$SINGBOX_DIR/sing-box" ] && is_universal "$SINGBOX_DIR/sing-box"; } \
-   && [ -f "$SINGBOX_DIR/sing-box-arm64" ] && [ -f "$SINGBOX_DIR/sing-box-amd64" ]; then
-  echo "==> 合并 sing-box 切片：lipo -create"
-  lipo -create -output "$SINGBOX_DIR/sing-box" "$SINGBOX_DIR/sing-box-arm64" "$SINGBOX_DIR/sing-box-amd64"
-  chmod 755 "$SINGBOX_DIR/sing-box"
-fi
+case "$TARGET_ARCH" in
+  arm64|x86_64) BUILD_ARCHS=(--arch "$TARGET_ARCH") ;;
+  universal) BUILD_ARCHS=(--arch arm64 --arch x86_64) ;;
+  *) echo "未知架构：$TARGET_ARCH" >&2; exit 1 ;;
+esac
 for file in sing-box LICENSE COPYING SOURCE; do
-  if [ ! -f "$SINGBOX_DIR/$file" ]; then
-    echo "缺少 $SINGBOX_DIR/$file。先在编译机上编自带的 sing-box：" >&2
-    echo "  remote-build --fetch out/sing-box:.build -- scripts/build-singbox.sh" >&2
-    exit 1
-  fi
+  [ -f "$SINGBOX_DIR/$file" ] || { echo "缺少 $SINGBOX_DIR/$file" >&2; exit 1; }
 done
-is_universal "$SINGBOX_DIR/sing-box" \
-  || { echo "$SINGBOX_DIR/sing-box 不是 Universal（需要 $ARCHS_EXPECTED，实际：$(lipo -archs "$SINGBOX_DIR/sing-box" 2>/dev/null || echo 不是 Mach-O)）" >&2; exit 1; }
-# Hysteria2 requires QUIC; refuse stale helpers that would import successfully but fail at launch.
-if ! "$SINGBOX_DIR/sing-box" version | grep -q 'with_quic'; then
-  echo "缺少 with_quic：请重新运行 scripts/build-singbox.sh 构建支持 Hysteria2 的引擎" >&2
-  exit 1
-fi
-# VLESS Reality 和 fp 指纹要 uTLS；不带 with_utls 编的 sing-box 遇到这类节点会启动失败。
-if ! "$SINGBOX_DIR/sing-box" version | grep -q 'with_utls'; then
-  echo "警告：$SINGBOX_DIR/sing-box 没有编进 with_utls，VLESS Reality 节点会连不上" >&2
-fi
-
-if [ -f "$MIERU_DIR/mieru-arm64" ] && [ -f "$MIERU_DIR/mieru-amd64" ]; then
-  lipo -create -output "$MIERU_DIR/mieru" "$MIERU_DIR/mieru-arm64" "$MIERU_DIR/mieru-amd64"
-fi
 for file in mieru LICENSE SOURCE; do
-  [ -f "$MIERU_DIR/$file" ] || { echo "缺少 $MIERU_DIR/$file，请先运行 scripts/build-mieru.sh" >&2; exit 1; }
+  [ -f "$MIERU_DIR/$file" ] || { echo "缺少 $MIERU_DIR/$file" >&2; exit 1; }
 done
-is_universal "$MIERU_DIR/mieru" || { echo "Mieru 需要 arm64 + x86_64 两个架构" >&2; exit 1; }
-
-echo "==> swift build -c release --arch arm64 --arch x86_64"
-swift build -c release --arch arm64 --arch x86_64 --product Safarier
-BIN="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)/Safarier"
-is_universal "$BIN" || { echo "$BIN 不是 Universal：$(lipo -archs "$BIN")" >&2; exit 1; }
+if ! "$SINGBOX_DIR/sing-box" version | grep -q 'with_quic'; then
+  echo "sing-box 缺少 with_quic" >&2; exit 1
+fi
+swift build -c release "${BUILD_ARCHS[@]}" --product Safarier
+BIN="$(swift build -c release "${BUILD_ARCHS[@]}" --show-bin-path)/Safarier"
+copy_slice() {
+  local source="$1" destination="$2"
+  if [ "$TARGET_ARCH" = universal ] || [ "$(lipo -archs "$source")" = "$TARGET_ARCH" ]; then
+    cp "$source" "$destination"
+  else
+    lipo "$source" -thin "$TARGET_ARCH" -output "$destination"
+  fi
+}
 
 echo "==> 组装 $APP ($TARGET_ARCH)"
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 mkdir -p "$APP/Contents/Helpers" "$APP/Contents/Resources/ThirdParty/sing-box"
 mkdir -p "$APP/Contents/Resources/ThirdParty/mieru"
-case "$TARGET_ARCH" in
-  universal)
-    cp "$BIN" "$APP/Contents/MacOS/Safarier"
-    cp "$SINGBOX_DIR/sing-box" "$APP/Contents/Helpers/sing-box"
-    cp "$MIERU_DIR/mieru" "$APP/Contents/Helpers/mieru"
-    ;;
-  arm64|x86_64)
-    lipo "$BIN" -thin "$TARGET_ARCH" -output "$APP/Contents/MacOS/Safarier"
-    lipo "$SINGBOX_DIR/sing-box" -thin "$TARGET_ARCH" -output "$APP/Contents/Helpers/sing-box"
-    lipo "$MIERU_DIR/mieru" -thin "$TARGET_ARCH" -output "$APP/Contents/Helpers/mieru"
-    ;;
-  *)
-    echo "未知 SAFARIER_ARCH=$TARGET_ARCH（支持 universal、arm64、x86_64）" >&2
-    exit 1
-    ;;
-esac
-chmod 755 "$APP/Contents/MacOS/Safarier" "$APP/Contents/Helpers/sing-box" "$APP/Contents/Helpers/mieru"
+copy_slice "$BIN" "$APP/Contents/MacOS/Liubendou"
+copy_slice "$SINGBOX_DIR/sing-box" "$APP/Contents/Helpers/sing-box"
+copy_slice "$MIERU_DIR/mieru" "$APP/Contents/Helpers/mieru"
+chmod 755 "$APP/Contents/MacOS/Liubendou" "$APP/Contents/Helpers/sing-box" "$APP/Contents/Helpers/mieru"
 printf 'APPL????' > "$APP/Contents/PkgInfo"
 cp "$SINGBOX_DIR/LICENSE" "$SINGBOX_DIR/COPYING" "$SINGBOX_DIR/SOURCE" "$APP/Contents/Resources/ThirdParty/sing-box/"
 cp "$MIERU_DIR/LICENSE" "$MIERU_DIR/SOURCE" "$APP/Contents/Resources/ThirdParty/mieru/"
+cp "$ROOT/NOTICE.md" "$APP/Contents/Resources/ThirdParty/NOTICE.md"
 mkdir -p "$APP/Contents/Resources/ThirdParty/Yams"
 cp "$ROOT/.build/checkouts/Yams/LICENSE" "$APP/Contents/Resources/ThirdParty/Yams/"
 
@@ -193,11 +164,11 @@ chmod -R u+w "$APP"
 
 echo "==> ad-hoc 签名"
 # 由内向外签：先签里面的 sing-box，再签整个 App（App 的签名把它封进去）。不用 --deep，否则会把 sing-box 重签掉。
-codesign -s - --force --identifier sh.safarier.sing-box "$APP/Contents/Helpers/sing-box"
-codesign -s - --force --identifier sh.safarier.mieru "$APP/Contents/Helpers/mieru"
+codesign -s - --force --identifier com.liubendou.browser.sing-box "$APP/Contents/Helpers/sing-box"
+codesign -s - --force --identifier com.liubendou.browser.mieru "$APP/Contents/Helpers/mieru"
 codesign -s - --force "$APP"
 codesign --verify --deep --strict "$APP"
-for binary in "$APP/Contents/MacOS/Safarier" "$APP/Contents/Helpers/sing-box" "$APP/Contents/Helpers/mieru"; do
+for binary in "$APP/Contents/MacOS/Liubendou" "$APP/Contents/Helpers/sing-box" "$APP/Contents/Helpers/mieru"; do
   if [ "$TARGET_ARCH" = "universal" ]; then
     is_universal "$binary" || { echo "$binary 不是 Universal：$(lipo -archs "$binary")" >&2; exit 1; }
   else

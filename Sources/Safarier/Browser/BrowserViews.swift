@@ -284,7 +284,7 @@ final class StartPageView: NSView {
                 icon: .glyph(summary.name.first.map { String($0).uppercased() } ?? "?", accent),
                 title: summary.name,
                 subtitle: [summary.mode, summary.device].compactMap { $0 }.joined(separator: " · "),
-                source: L10n.text("来自 Safarier 环境护盾 ›")
+                source: L10n.text("来自 六本豆 环境护盾 ›")
             )
             let network = StartPageCard(icon: .symbol("network", .systemBlue), title: summary.outbound, subtitle: summary.region, source: L10n.text("点击检测出口 IP ›"))
             network.onClick = { [weak self] in self?.open(Self.exitIPCheckURL) }

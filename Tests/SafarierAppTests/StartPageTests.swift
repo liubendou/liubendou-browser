@@ -231,7 +231,7 @@ final class StartPageTests: XCTestCase {
         for card in view.cards { XCTAssertEqual(card.frame.size, StartPageView.cardSize) }
         XCTAssertEqual(view.cards[0].titleLabel.stringValue, "工作")
         XCTAssertEqual(view.cards[0].subtitleLabel.stringValue, "持久环境 · Mac mini (M4 · 4K Retina)")
-        XCTAssertEqual(view.cards[0].sourceLabel.stringValue, "来自 Safarier 环境护盾 ›")
+        XCTAssertEqual(view.cards[0].sourceLabel.stringValue, "来自 六本豆 环境护盾 ›")
         XCTAssertEqual(view.cards[1].titleLabel.stringValue, "订阅「机场」节点「🇯🇵 Tokyo」（经 sing-box）")
         XCTAssertEqual(view.cards[1].subtitleLabel.stringValue, "语言：ja-JP, ja · 时区：Asia/Tokyo（跟随代理出口）")
         XCTAssertEqual(view.cards[1].sourceLabel.stringValue, "点击检测出口 IP ›")

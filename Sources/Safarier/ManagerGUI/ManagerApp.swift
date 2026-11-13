@@ -24,7 +24,7 @@ enum ManagerGUI {
         alert.messageText = L10n.text("AI Agent 接入")
         do {
             _ = try AgentSkillGuide.install()
-            alert.informativeText = L10n.text("已同步 safarier-browser Skill 到 Claude Code 与 Codex 的技能目录。重新加载 Agent 的技能列表后，即可操作环境、填表和截图。其他客户端可导入指南。\n\n遇到验证码或需要确认的步骤，可用 agent focus 切回窗口人工完成。")
+            alert.informativeText = L10n.text("已同步 liubendou-browser Skill 到 Claude Code 与 Codex 的技能目录。重新加载 Agent 的技能列表后，即可操作环境、填表和截图。其他客户端可导入指南。\n\n遇到验证码或需要确认的步骤，可用 agent focus 切回窗口人工完成。")
         } catch {
             alert.informativeText = L10n.text("Skill 同步失败：%@\n可拷贝指南后手动导入。", error.localizedDescription)
         }
@@ -45,7 +45,7 @@ struct ManagerApp: App {
     @StateObject private var model = ManagerModel(workspace: ManagerApp.workspace)
 
     var body: some Scene {
-        Window("Safarier", id: "manager") {
+        Window("六本豆", id: "manager") {
             SafarierAppView(model: model)
                 .frame(minWidth: 860, minHeight: 540)
         }
@@ -53,11 +53,11 @@ struct ManagerApp: App {
         .commands {
             SidebarCommands()
             CommandGroup(replacing: .appInfo) {
-                Button("关于 Safarier") { AboutAndUpdateController.showAbout() }
+                Button("关于 六本豆") { AboutAndUpdateController.showAbout() }
                 Button("检查更新…") { AboutAndUpdateController.checkForUpdates() }
             }
             CommandGroup(replacing: .help) {
-                Button("Safarier GitHub 主页") { AboutAndUpdateController.openGitHub() }
+                Button("六本豆 GitHub 主页") { AboutAndUpdateController.openGitHub() }
                 Button("查看最新版本 (GitHub Releases)") { AboutAndUpdateController.openReleases() }
                 Button("反馈问题 (GitHub Issues)") { AboutAndUpdateController.openIssues() }
             }

@@ -1,4 +1,4 @@
-/* Safarier 界面英文文案。
+/* 六本豆 界面英文文案。
    键是源码里的中文原文：SwiftUI 的 Text/Button/Label/Section 等按字面量自动查表，
    普通 String 和带插值的文案走 L10n.text（键里的插值写成 %@ / %lld / %lf）。
    查不到的键显示中文原文。 */
@@ -95,8 +95,8 @@
 "Safari 原生防指纹保护" = "Safari fingerprinting protection";
 "Safari 原生防指纹护盾已阻止跨站追踪器剖析此环境" = "Safari's fingerprinting shield blocks cross-site trackers from profiling this environment";
 "Safari 无痕同款内存数据存储（%@已打开，回读一致），窗口关闭即销毁" = "Safari Private Browsing–style in-memory data store (%@ enabled, readback verified); destroyed when the window closes";
-"Safarier GitHub 主页" = "Safarier on GitHub";
-"Safarier 扩展" = "Safarier Extensions";
+"六本豆 GitHub 主页" = "六本豆 on GitHub";
+"六本豆 扩展" = "六本豆 Extensions";
 "Skill 同步失败：%@\n可拷贝指南后手动导入。" = "Couldn't sync the Skill: %@\nCopy the guide and import it manually.";
 "Socket 路径超过系统限制：%@" = "Socket path exceeds the system limit: %@";
 "TZ 传不到 WebContent，网页仍是系统时区；开启 --spi tz 使用引擎层覆盖" = "TZ does not reach WebContent, so pages still use the system time zone; enable --spi tz for an engine-level override";
@@ -128,7 +128,7 @@
 "fontlist：未知状态 %lld：%@" = "fontlist: unknown status %lld: %@";
 "https://… 或直接粘贴 ss:// vless:// 等节点链接" = "https://… or paste ss://, vless://, and other node links";
 "inspector 返回 nil" = "inspector returned nil";
-"macOS 拦下了自带的 sing-box：%@ 带着下载来的隔离标记，而且所在位置是只读的（多半是 App 还在「下载」里，被系统放到了临时位置运行）。把 Safarier.app 拖进「应用程序」，或在终端运行 xattr -dr com.apple.quarantine /Applications/Safarier.app，再重新打开。" = "macOS blocked the bundled sing-box: %@ carries the quarantine flag from downloading, and its location is read-only (the app is probably still in Downloads, so the system runs it from a temporary location). Drag Safarier.app into Applications, or run xattr -dr com.apple.quarantine /Applications/Safarier.app in Terminal, then open it again.";
+"macOS 拦下了自带的 sing-box：%@ 带着下载来的隔离标记，而且所在位置是只读的（多半是 App 还在「下载」里，被系统放到了临时位置运行）。把 六本豆.app 拖进「应用程序」，或在终端运行 xattr -dr com.apple.quarantine /Applications/六本豆.app，再重新打开。" = "macOS blocked the bundled sing-box: %@ carries the quarantine flag from downloading, and its location is read-only (the app is probably still in Downloads, so the system runs it from a temporary location). Drag 六本豆.app into Applications, or run xattr -dr com.apple.quarantine /Applications/六本豆.app in Terminal, then open it again.";
 "peerConnection = NO（回读一致）" = "peerConnection = NO (readback verified)";
 "processPool 没能安装到引擎配置（回读不是同一对象）" = "processPool could not be installed on the engine configuration (readback is a different object)";
 "processPool.timeZone = %@，独立进程池（%@）" = "processPool.timeZone = %@, dedicated process pool (%@)";
@@ -208,8 +208,8 @@
 "共 %lld 个节点" = "%lld nodes";
 "共享" = "Share";
 "关于 / GitHub" = "About / GitHub";
-"关于 Safarier" = "About Safarier";
-"关于 Safarier、检查更新、打开 GitHub 页面" = "About Safarier, check for updates, and open GitHub pages";
+"关于 六本豆" = "About 六本豆";
+"关于 六本豆、检查更新、打开 GitHub 页面" = "About 六本豆, check for updates, and open GitHub pages";
 "关闭 WebRTC" = "Disable WebRTC";
 "关闭" = "Close";
 "关闭其他标签页" = "Close Other Tabs";
@@ -355,7 +355,7 @@
 "已删除代理 %@" = "Deleted proxy %@";
 "已删除扩展 %@" = "Removed extension %@";
 "已加载扩展：%@" = "Extension loaded: %@";
-"已同步 safarier-browser Skill 到 Claude Code 与 Codex 的技能目录。重新加载 Agent 的技能列表后，即可操作环境、填表和截图。其他客户端可导入指南。\n\n遇到验证码或需要确认的步骤，可用 agent focus 切回窗口人工完成。" = "The safarier-browser Skill is now synced to the Claude Code and Codex skill folders. After reloading the agent's skill list, it can drive profiles, fill forms, and take screenshots. Other clients can import the guide.\n\nIf a CAPTCHA or confirmation step appears, use agent focus to switch back to the window and finish it by hand.";
+"已同步 liubendou-browser Skill 到 Claude Code 与 Codex 的技能目录。重新加载 Agent 的技能列表后，即可操作环境、填表和截图。其他客户端可导入指南。\n\n遇到验证码或需要确认的步骤，可用 agent focus 切回窗口人工完成。" = "The liubendou-browser Skill is now synced to the Claude Code and Codex skill folders. After reloading the agent's skill list, it can drive profiles, fill forms, and take screenshots. Other clients can import the guide.\n\nIf a CAPTCHA or confirmation step appears, use agent focus to switch back to the window and finish it by hand.";
 "已启动 %@，pid %d，日志 %@" = "Launched %@, pid %d, log %@";
 "已启用" = "Enabled";
 "已在后台启动环境「%@」（%@）" = "Started profile “%@” in the background (%@)";
@@ -407,7 +407,7 @@
 "截图返回为空" = "Screenshot returned an empty image";
 "截断文字悬停提示" = "Truncated text hover tooltip";
 "打印…" = "Print…";
-"打开 Safarier 的 GitHub 项目页" = "Open the Safarier project on GitHub";
+"打开 六本豆 的 GitHub 项目页" = "Open the 六本豆 project on GitHub";
 "打开" = "Open";
 "打开位置…" = "Open Location…";
 "扩展不存在：%@。" = "The extension does not exist: %@.";
@@ -417,7 +417,7 @@
 "扩展的 manifest.json 无效或缺失。" = "The extension's manifest.json is invalid or missing.";
 "找不到 /Applications/Safari.app，保持 WebKit 默认 UA" = "/Applications/Safari.app not found; keeping the WebKit default UA";
 "找不到 profile %@" = "Profile not found: %@";
-"找不到 sing-box（%@），订阅节点要靠它连出去。Safarier.app 里自带一份；单独用命令行版时请 brew install sing-box，或用环境变量 SAFARIER_SINGBOX 指定路径。" = "sing-box was not found (%@); subscription nodes need it to connect. Safarier.app bundles its own copy; when using the command-line build, run brew install sing-box, or set the path with the SAFARIER_SINGBOX environment variable.";
+"找不到 sing-box（%@），订阅节点要靠它连出去。六本豆.app 里自带一份；单独用命令行版时请 brew install sing-box，或用环境变量 SAFARIER_SINGBOX 指定路径。" = "sing-box was not found (%@); subscription nodes need it to connect. 六本豆.app bundles its own copy; when using the command-line build, run brew install sing-box, or set the path with the SAFARIER_SINGBOX environment variable.";
 "找不到 subscription %@" = "Subscription not found: %@";
 "找不到代理 %@" = "Proxy not found: %@";
 "找不到代理" = "Proxy not found";
@@ -474,7 +474,7 @@
 "无法连接代理服务器，请检查地址、端口及服务是否开启。" = "Could not connect to the proxy server; check the address and port, and whether the service is running.";
 "无法连接到环境 Agent Socket（%@, errno %d）" = "Could not connect to the profile agent socket (%@, errno %d)";
 "无法连接服务器" = "Could not connect to the server";
-"无法重新启动 Safarier" = "Couldn't Restart Safarier";
+"无法重新启动 六本豆" = "Couldn't Restart 六本豆";
 "无认证" = "No authentication";
 "既不是订阅网址（https://…），也不是节点链接（ss:// vless:// 等）或 Base64 订阅内容。" = "This is neither a subscription URL (https://…), a node link (ss://, vless://, and so on), nor Base64 subscription content.";
 "日志：%@" = "Log: %@";
@@ -498,7 +498,7 @@
 "普通 WKWebView 没有 ApplePaySession、PushManager、navigator.mediaDevices，网页还能看到后来下载和用户安装的字体；可用 --spi safari 打开" = "A plain WKWebView lacks ApplePaySession, PushManager and navigator.mediaDevices, and pages can still see downloaded and user-installed fonts; enable with --spi safari";
 "智能防跟踪没有确认开启（%@）" = "ITP could not be confirmed enabled (%@)";
 "智能防跟踪（ITP）开启（回读一致）" = "Intelligent Tracking Prevention (ITP) enabled (readback verified)";
-"更新包里没有 Safarier.app" = "The update package doesn't contain Safarier.app.";
+"更新包里没有 六本豆.app" = "The update package doesn't contain 六本豆.app.";
 "更新失败" = "Update Failed";
 "更早" = "Earlier";
 "最小化" = "Minimize";
@@ -525,7 +525,7 @@
 "机型模拟" = "Device Simulation";
 "机型：" = "Device model: ";
 "来源" = "Source";
-"来自 Safarier 环境护盾 ›" = "From Safarier environment shield ›";
+"来自 六本豆 环境护盾 ›" = "From 六本豆 environment shield ›";
 "查找…" = "Find…";
 "查找上一个" = "Find Previous";
 "查找下一个" = "Find Next";
@@ -606,7 +606,7 @@
 "用户名" = "Username";
 "用户名和密码认证" = "Username and Password Authentication";
 "用户名：%@ · 密码保存在钥匙串" = "Username: %@ · Password stored in Keychain";
-"用法：\n  safarier profile list\n  safarier profile create --name NAME [--mode persistent|ephemeral] [--lang proxy|timezone|en-US,en] [--tz proxy|system|America/Los_Angeles] [--url https://example.com] [--proxy PROXY_ID | --sub SUBSCRIPTION_ID --node NODE_NAME] [--device MODEL] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile update PROFILE_ID [--name NAME] [--lang proxy|timezone|en-US,en] [--tz proxy|system|ZONE] [--url URL|none] [--proxy PROXY_ID|none | --sub SUBSCRIPTION_ID --node NODE_NAME | --node none] [--device MODEL|none] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile clone PROFILE_ID [--name NAME]\n  safarier profile delete PROFILE_ID [--purge-data]\n  safarier proxy list\n  safarier proxy add --name NAME --kind socks5|httpConnect --host HOST --port PORT [--username USER] [--password-stdin] [--upstream-proxy ID | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy update PROXY_ID [--upstream-proxy ID|none | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy delete PROXY_ID\n  safarier sub add --name NAME --url URL|节点链接|-\n  safarier sub list\n  safarier sub update [SUBSCRIPTION_ID]\n  safarier sub nodes SUBSCRIPTION_ID\n  safarier device list\n  safarier ext list\n  safarier ext add PATH [--profile PROFILE_ID]\n  safarier ext remove NAME\n  safarier launch PROFILE_ID [--url URL] [--spi LIST] [--background]\n  safarier probe PROFILE_ID [--url URL] [--spi LIST]\n  safarier agent skill | install-skill | spaces\n  safarier agent open PROFILE_ID_OR_NAME [URL] [--background] [--new-tab]\n  safarier agent snapshot PROFILE_ID_OR_NAME [--tab N]\n  safarier agent click PROFILE_ID_OR_NAME REF_OR_SELECTOR [--tab N]\n  safarier agent fill PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--tab N]\n  safarier agent type PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--delay-ms 30] [--tab N]\n  safarier agent click-xy PROFILE_ID_OR_NAME X Y [--hold-ms MS] [--tab N]\n  safarier agent wait PROFILE_ID_OR_NAME SELECTOR_OR_TEXT [--timeout-ms 10000] [--tab N]\n  safarier agent focus PROFILE_ID_OR_NAME [--tab N]\n  safarier agent eval PROFILE_ID_OR_NAME JS_CODE [--tab N]\n  safarier agent screenshot PROFILE_ID_OR_NAME OUTPUT_PATH [--tab N]\n  safarier agent tab-list | tab-new | tab-close PROFILE_ID_OR_NAME [--tab N]\n--sub/--node：出站走订阅里的节点（按节点名匹配，名字带空格时加引号）；启动时自动起 sing-box 转成本地 SOCKS5。\n       和 --proxy 二选一：设了一个就清掉另一个。\n--lang/--tz：proxy（或 auto）= 跟随代理，每次启动按代理出口 IP 的国家自动设置；\n       --lang timezone（兼容 system / none）= 按生效时区匹配；--tz system（或 none）= 跟随系统时区。\n       其它值是语言标签（逗号分隔）或时区标识。未自定义语言时优先匹配生效时区，无地区时区时跟随系统。\n--device：模拟机型（见 device list），决定浏览窗口的默认视口尺寸、比例和屏幕色域 / HDR。\n--spi：系统 WebKit 原生隐私能力。afp=高级隐私保护（反指纹），tz=引擎层时区同步，webrtc=关闭 WebRTC，\n       safari=打开 Safari 专有接口（ApplePaySession、PushManager、navigator.mediaDevices），并像 Safari 一样关闭用户安装字体，\n       webgpu=打开 WebGPU（真 Safari 在 macOS 15 上没有，打开后和真 Safari 不一致），\n       fontlist=按环境语言过滤内置与下载的中日韩专用字体（如英文环境隐藏宋体、冬青黑体、苹方），保留通用字体回退。\n       新建环境默认 default（afp,tz,safari,fontlist）；all 是全部六项。launch/probe 上的 --spi 只覆盖这一次运行。\nsub add --url：订阅网址（http / https / file），或直接给节点链接（ss:// ss2022:// vless:// vmess:// trojan:// anytls:// socks://，\n       多条用换行分隔，也可以是 Base64；- 表示从标准输入读）。直接给的链接保存在元数据目录的 subscriptions-inline/ 里，\n       sub update 时重新读它。订阅里 hysteria2 等暂不支持的协议会跳过，其余节点照常导入。\nprofile clone：复制全部设置到新环境（新 ID，不复制 Cookie 等网站数据），默认名字加「副本」。\n前置连接：本机 → 前置代理/节点 → 当前代理 → 网站。仅支持两跳；--upstream-proxy none 清除前置。\n       自定义前置从文件读取单个 sing-box 出站 JSON，避免认证信息出现在命令行参数中。\n环境变量 SAFARIER_HOME 可覆盖元数据目录（默认 ~/Library/Application Support/Safarier）。" = "Usage:\n  safarier profile list\n  safarier profile create --name NAME [--mode persistent|ephemeral] [--lang proxy|timezone|en-US,en] [--tz proxy|system|America/Los_Angeles] [--url https://example.com] [--proxy PROXY_ID | --sub SUBSCRIPTION_ID --node NODE_NAME] [--device MODEL] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile update PROFILE_ID [--name NAME] [--lang proxy|timezone|en-US,en] [--tz proxy|system|ZONE] [--url URL|none] [--proxy PROXY_ID|none | --sub SUBSCRIPTION_ID --node NODE_NAME | --node none] [--device MODEL|none] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile clone PROFILE_ID [--name NAME]\n  safarier profile delete PROFILE_ID [--purge-data]\n  safarier proxy list\n  safarier proxy add --name NAME --kind socks5|httpConnect --host HOST --port PORT [--username USER] [--password-stdin] [--upstream-proxy ID | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy update PROXY_ID [--upstream-proxy ID|none | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy delete PROXY_ID\n  safarier sub add --name NAME --url URL|NODE_LINK|-\n  safarier sub list\n  safarier sub update [SUBSCRIPTION_ID]\n  safarier sub nodes SUBSCRIPTION_ID\n  safarier device list\n  safarier ext list\n  safarier ext add PATH [--profile PROFILE_ID]\n  safarier ext remove NAME\n  safarier launch PROFILE_ID [--url URL] [--spi LIST] [--background]\n  safarier probe PROFILE_ID [--url URL] [--spi LIST]\n  safarier agent skill | install-skill | spaces\n  safarier agent open PROFILE_ID_OR_NAME [URL] [--background] [--new-tab]\n  safarier agent snapshot PROFILE_ID_OR_NAME [--tab N]\n  safarier agent click PROFILE_ID_OR_NAME REF_OR_SELECTOR [--tab N]\n  safarier agent fill PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--tab N]\n  safarier agent type PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--delay-ms 30] [--tab N]\n  safarier agent click-xy PROFILE_ID_OR_NAME X Y [--hold-ms MS] [--tab N]\n  safarier agent wait PROFILE_ID_OR_NAME SELECTOR_OR_TEXT [--timeout-ms 10000] [--tab N]\n  safarier agent focus PROFILE_ID_OR_NAME [--tab N]\n  safarier agent eval PROFILE_ID_OR_NAME JS_CODE [--tab N]\n  safarier agent screenshot PROFILE_ID_OR_NAME OUTPUT_PATH [--tab N]\n  safarier agent tab-list | tab-new | tab-close PROFILE_ID_OR_NAME [--tab N]\n--sub/--node: outbound goes through a node in the subscription (matched by node name; quote names that contain spaces); sing-box is started automatically at launch and exposed as a local SOCKS5 proxy.\n       Mutually exclusive with --proxy: setting one clears the other.\n--lang/--tz: proxy (or auto) = follow the proxy, set on every launch from the country of the proxy exit IP;\n       --lang timezone (also system / none) = match the effective time zone; --tz system (or none) = follow the system time zone.\n       any other value is a comma-separated list of language tags or a time zone identifier. Unless languages are customized, match the effective time zone first, then follow the system when no regional time zone is available.\n--device: simulated device model (see device list); sets the browser window's default viewport size, scale, and color gamut / HDR.\n--spi: native WebKit privacy features. afp=Advanced Privacy Protection (anti-fingerprinting), tz=engine-level time zone sync, webrtc=disable WebRTC,\n       safari=enable Safari-only interfaces (ApplePaySession, PushManager, navigator.mediaDevices) and disable user-installed fonts like Safari,\n       webgpu=enable WebGPU (real Safari on macOS 15 does not have it, so enabling it diverges from Safari),\n       fontlist=filter built-in and downloaded CJK-specific fonts by profile language (e.g. hide Songti, Hiragino Sans GB and PingFang in English profiles), while retaining general font fallback.\n       New profiles default to default (afp,tz,safari,fontlist); all means all six. --spi on launch/probe overrides just this run.\nsub add --url: subscription URL (http / https / file), or inline node links (ss:// ss2022:// vless:// vmess:// trojan:// anytls:// socks://,\n       multiple links separated by newlines; Base64 also accepted; - reads from standard input). Inline links are stored in subscriptions-inline/\n       in the metadata directory and re-read on sub update. Protocols a subscription does not support yet (e.g. hysteria2) are skipped; other nodes import as usual.\nprofile clone: copy all settings into a new profile (new ID; site data such as cookies is not copied); the default name gets a “copy” suffix.\nupstream: this Mac → upstream proxy/node → this proxy → website. Two hops only; --upstream-proxy none clears the upstream.\n       A custom upstream is read from a file containing one sing-box outbound JSON object, so credentials never appear in command-line arguments.\nThe SAFARIER_HOME environment variable overrides the metadata directory (default ~/Library/Application Support/Safarier).";
+"用法：\n  safarier profile list\n  safarier profile create --name NAME [--mode persistent|ephemeral] [--lang proxy|timezone|en-US,en] [--tz proxy|system|America/Los_Angeles] [--url https://example.com] [--proxy PROXY_ID | --sub SUBSCRIPTION_ID --node NODE_NAME] [--device MODEL] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile update PROFILE_ID [--name NAME] [--lang proxy|timezone|en-US,en] [--tz proxy|system|ZONE] [--url URL|none] [--proxy PROXY_ID|none | --sub SUBSCRIPTION_ID --node NODE_NAME | --node none] [--device MODEL|none] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile clone PROFILE_ID [--name NAME]\n  safarier profile delete PROFILE_ID [--purge-data]\n  safarier proxy list\n  safarier proxy add --name NAME --kind socks5|httpConnect --host HOST --port PORT [--username USER] [--password-stdin] [--upstream-proxy ID | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy update PROXY_ID [--upstream-proxy ID|none | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy delete PROXY_ID\n  safarier sub add --name NAME --url URL|节点链接|-\n  safarier sub list\n  safarier sub update [SUBSCRIPTION_ID]\n  safarier sub nodes SUBSCRIPTION_ID\n  safarier device list\n  safarier ext list\n  safarier ext add PATH [--profile PROFILE_ID]\n  safarier ext remove NAME\n  safarier launch PROFILE_ID [--url URL] [--spi LIST] [--background]\n  safarier probe PROFILE_ID [--url URL] [--spi LIST]\n  safarier agent skill | install-skill | spaces\n  safarier agent open PROFILE_ID_OR_NAME [URL] [--background] [--new-tab]\n  safarier agent snapshot PROFILE_ID_OR_NAME [--tab N]\n  safarier agent click PROFILE_ID_OR_NAME REF_OR_SELECTOR [--tab N]\n  safarier agent fill PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--tab N]\n  safarier agent type PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--delay-ms 30] [--tab N]\n  safarier agent click-xy PROFILE_ID_OR_NAME X Y [--hold-ms MS] [--tab N]\n  safarier agent wait PROFILE_ID_OR_NAME SELECTOR_OR_TEXT [--timeout-ms 10000] [--tab N]\n  safarier agent focus PROFILE_ID_OR_NAME [--tab N]\n  safarier agent eval PROFILE_ID_OR_NAME JS_CODE [--tab N]\n  safarier agent screenshot PROFILE_ID_OR_NAME OUTPUT_PATH [--tab N]\n  safarier agent tab-list | tab-new | tab-close PROFILE_ID_OR_NAME [--tab N]\n--sub/--node：出站走订阅里的节点（按节点名匹配，名字带空格时加引号）；启动时自动起 sing-box 转成本地 SOCKS5。\n       和 --proxy 二选一：设了一个就清掉另一个。\n--lang/--tz：proxy（或 auto）= 跟随代理，每次启动按代理出口 IP 的国家自动设置；\n       --lang timezone（兼容 system / none）= 按生效时区匹配；--tz system（或 none）= 跟随系统时区。\n       其它值是语言标签（逗号分隔）或时区标识。未自定义语言时优先匹配生效时区，无地区时区时跟随系统。\n--device：模拟机型（见 device list），决定浏览窗口的默认视口尺寸、比例和屏幕色域 / HDR。\n--spi：系统 WebKit 原生隐私能力。afp=高级隐私保护（反指纹），tz=引擎层时区同步，webrtc=关闭 WebRTC，\n       safari=打开 Safari 专有接口（ApplePaySession、PushManager、navigator.mediaDevices），并像 Safari 一样关闭用户安装字体，\n       webgpu=打开 WebGPU（真 Safari 在 macOS 15 上没有，打开后和真 Safari 不一致），\n       fontlist=按环境语言过滤内置与下载的中日韩专用字体（如英文环境隐藏宋体、冬青黑体、苹方），保留通用字体回退。\n       新建环境默认 default（afp,tz,safari,fontlist）；all 是全部六项。launch/probe 上的 --spi 只覆盖这一次运行。\nsub add --url：订阅网址（http / https / file），或直接给节点链接（ss:// ss2022:// vless:// vmess:// trojan:// anytls:// socks://，\n       多条用换行分隔，也可以是 Base64；- 表示从标准输入读）。直接给的链接保存在元数据目录的 subscriptions-inline/ 里，\n       sub update 时重新读它。订阅里 hysteria2 等暂不支持的协议会跳过，其余节点照常导入。\nprofile clone：复制全部设置到新环境（新 ID，不复制 Cookie 等网站数据），默认名字加「副本」。\n前置连接：本机 → 前置代理/节点 → 当前代理 → 网站。仅支持两跳；--upstream-proxy none 清除前置。\n       自定义前置从文件读取单个 sing-box 出站 JSON，避免认证信息出现在命令行参数中。\n环境变量 SAFARIER_HOME 可覆盖元数据目录（默认 ~/Library/Application Support/六本豆）。" = "Usage:\n  safarier profile list\n  safarier profile create --name NAME [--mode persistent|ephemeral] [--lang proxy|timezone|en-US,en] [--tz proxy|system|America/Los_Angeles] [--url https://example.com] [--proxy PROXY_ID | --sub SUBSCRIPTION_ID --node NODE_NAME] [--device MODEL] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile update PROFILE_ID [--name NAME] [--lang proxy|timezone|en-US,en] [--tz proxy|system|ZONE] [--url URL|none] [--proxy PROXY_ID|none | --sub SUBSCRIPTION_ID --node NODE_NAME | --node none] [--device MODEL|none] [--notes TEXT] [--spi default|none|all|afp,tz,webrtc,safari,webgpu,fontlist]\n  safarier profile clone PROFILE_ID [--name NAME]\n  safarier profile delete PROFILE_ID [--purge-data]\n  safarier proxy list\n  safarier proxy add --name NAME --kind socks5|httpConnect --host HOST --port PORT [--username USER] [--password-stdin] [--upstream-proxy ID | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy update PROXY_ID [--upstream-proxy ID|none | --upstream-sub ID --upstream-node NAME | --upstream-json-file PATH]\n  safarier proxy delete PROXY_ID\n  safarier sub add --name NAME --url URL|NODE_LINK|-\n  safarier sub list\n  safarier sub update [SUBSCRIPTION_ID]\n  safarier sub nodes SUBSCRIPTION_ID\n  safarier device list\n  safarier ext list\n  safarier ext add PATH [--profile PROFILE_ID]\n  safarier ext remove NAME\n  safarier launch PROFILE_ID [--url URL] [--spi LIST] [--background]\n  safarier probe PROFILE_ID [--url URL] [--spi LIST]\n  safarier agent skill | install-skill | spaces\n  safarier agent open PROFILE_ID_OR_NAME [URL] [--background] [--new-tab]\n  safarier agent snapshot PROFILE_ID_OR_NAME [--tab N]\n  safarier agent click PROFILE_ID_OR_NAME REF_OR_SELECTOR [--tab N]\n  safarier agent fill PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--tab N]\n  safarier agent type PROFILE_ID_OR_NAME REF_OR_SELECTOR TEXT [--delay-ms 30] [--tab N]\n  safarier agent click-xy PROFILE_ID_OR_NAME X Y [--hold-ms MS] [--tab N]\n  safarier agent wait PROFILE_ID_OR_NAME SELECTOR_OR_TEXT [--timeout-ms 10000] [--tab N]\n  safarier agent focus PROFILE_ID_OR_NAME [--tab N]\n  safarier agent eval PROFILE_ID_OR_NAME JS_CODE [--tab N]\n  safarier agent screenshot PROFILE_ID_OR_NAME OUTPUT_PATH [--tab N]\n  safarier agent tab-list | tab-new | tab-close PROFILE_ID_OR_NAME [--tab N]\n--sub/--node: outbound goes through a node in the subscription (matched by node name; quote names that contain spaces); sing-box is started automatically at launch and exposed as a local SOCKS5 proxy.\n       Mutually exclusive with --proxy: setting one clears the other.\n--lang/--tz: proxy (or auto) = follow the proxy, set on every launch from the country of the proxy exit IP;\n       --lang timezone (also system / none) = match the effective time zone; --tz system (or none) = follow the system time zone.\n       any other value is a comma-separated list of language tags or a time zone identifier. Unless languages are customized, match the effective time zone first, then follow the system when no regional time zone is available.\n--device: simulated device model (see device list); sets the browser window's default viewport size, scale, and color gamut / HDR.\n--spi: native WebKit privacy features. afp=Advanced Privacy Protection (anti-fingerprinting), tz=engine-level time zone sync, webrtc=disable WebRTC,\n       safari=enable Safari-only interfaces (ApplePaySession, PushManager, navigator.mediaDevices) and disable user-installed fonts like Safari,\n       webgpu=enable WebGPU (real Safari on macOS 15 does not have it, so enabling it diverges from Safari),\n       fontlist=filter built-in and downloaded CJK-specific fonts by profile language (e.g. hide Songti, Hiragino Sans GB and PingFang in English profiles), while retaining general font fallback.\n       New profiles default to default (afp,tz,safari,fontlist); all means all six. --spi on launch/probe overrides just this run.\nsub add --url: subscription URL (http / https / file), or inline node links (ss:// ss2022:// vless:// vmess:// trojan:// anytls:// socks://,\n       multiple links separated by newlines; Base64 also accepted; - reads from standard input). Inline links are stored in subscriptions-inline/\n       in the metadata directory and re-read on sub update. Protocols a subscription does not support yet (e.g. hysteria2) are skipped; other nodes import as usual.\nprofile clone: copy all settings into a new profile (new ID; site data such as cookies is not copied); the default name gets a “copy” suffix.\nupstream: this Mac → upstream proxy/node → this proxy → website. Two hops only; --upstream-proxy none clears the upstream.\n       A custom upstream is read from a file containing one sing-box outbound JSON object, so credentials never appear in command-line arguments.\nThe SAFARIER_HOME environment variable overrides the metadata directory (default ~/Library/Application Support/六本豆).";
 "电话号码识别" = "Phone number detection";
 "留空保留原密码" = "Leave blank to keep current password";
 "登录" = "Sign In";
@@ -703,7 +703,7 @@
 "语言和时区跟随系统" = "Language and time zone follow the system";
 "语言标签" = "Language Tag";
 "语言标签不合法：%@（例如 en-US）。" = "Invalid language tag: %@ (for example, en-US).";
-"语言设置已保存，下次启动时生效。" = "The language setting is saved and will apply the next time Safarier starts.";
+"语言设置已保存，下次启动时生效。" = "The language setting is saved and will apply the next time 六本豆 starts.";
 "语言：" = "Language: ";
 "请先保存或还原修改" = "Save or revert your changes first";
 "请先在详情页保存或还原修改。" = "Save or revert your changes on the details page first.";
@@ -763,7 +763,7 @@
 "连接超时" = "The connection timed out";
 "连接路径" = "Connection Path";
 "连通性" = "Connectivity";
-"退出 Safarier" = "Quit Safarier";
+"退出 六本豆" = "Quit 六本豆";
 "退出码 %lld" = "exit code %lld";
 "退格键不后退" = "Backspace does not navigate back";
 "选择代理" = "Choose Proxy";
@@ -793,7 +793,7 @@
 "隐私报告" = "Privacy Report";
 "隐私报告：%@，%@" = "Privacy Report: %@, %@";
 "隐藏 Apple Pay 银行卡状态" = "Hide Apple Pay Card Status";
-"隐藏 Safarier" = "Hide Safarier";
+"隐藏 六本豆" = "Hide 六本豆";
 "隐藏其他" = "Hide Others";
 "隐藏历史记录" = "Hide History";
 "隐藏本次提醒" = "Dismiss This Notice";
@@ -814,7 +814,7 @@
 "；" = "; ";
 "；%@" = "; %@";
 
-"找不到 Mieru。请使用包含 Mieru 的新版 Safarier，或用 SAFARIER_MIERU 指定可执行文件。" = "Mieru was not found. Use a Safarier build that includes Mieru, or set SAFARIER_MIERU to its executable.";
+"找不到 Mieru。请使用包含 Mieru 的新版 六本豆，或用 SAFARIER_MIERU 指定可执行文件。" = "Mieru was not found. Use a 六本豆 build that includes Mieru, or set SAFARIER_MIERU to its executable.";
 
 "Mieru 节点参数无效，请检查用户名、密码、传输和多路复用设置。" = "Invalid Mieru node. Check the username, password, transport, and multiplexing settings.";
 
@@ -859,3 +859,6 @@
 "按环境语言过滤内置及下载的中日韩专用字体；英文环境隐藏宋体、冬青黑体、苹方等字族，保留常用字体和通用字符回退" = "Filters built-in and downloaded CJK-specific fonts by profile language. English profiles hide families such as Songti, Hiragino Sans GB and PingFang, while keeping common fonts and general character fallback.";
 
 "跟随时区：%@" = "Follow Time Zone: %@";
+
+"六本豆" = "六本豆";
+"多环境浏览器" = "Multi-profile Browser";

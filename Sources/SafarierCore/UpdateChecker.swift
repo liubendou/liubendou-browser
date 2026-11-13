@@ -101,10 +101,10 @@ public enum UpdateCheckError: Error, Equatable, LocalizedError {
 /// 检查 GitHub 上的最新 Release。管理器启动时静默查一次、用户点「检查更新…」时再查一次，不轮询、不带任何环境数据。
 /// 浏览器（Runner）进程不要调用 `checkLatest`：它的直连请求不走环境的代理，会泄露真实 IP。
 public enum UpdateChecker {
-    public static let repositoryURL = URL(string: "https://github.com/Cd1s/safarier")!
-    public static let releasesURL = URL(string: "https://github.com/Cd1s/safarier/releases/latest")!
-    public static let issuesURL = URL(string: "https://github.com/Cd1s/safarier/issues")!
-    public static let latestReleaseAPIURL = URL(string: "https://api.github.com/repos/Cd1s/safarier/releases/latest")!
+    public static let repositoryURL = URL(string: "https://github.com/liubendou/liubendou-browser")!
+    public static let releasesURL = URL(string: "https://github.com/liubendou/liubendou-browser/releases/latest")!
+    public static let issuesURL = URL(string: "https://github.com/liubendou/liubendou-browser/issues")!
+    public static let latestReleaseAPIURL = URL(string: "https://api.github.com/repos/liubendou/liubendou-browser/releases/latest")!
 
     private struct Payload: Decodable {
         let tag_name: String
@@ -154,7 +154,7 @@ public enum UpdateChecker {
     ) async throws -> UpdateStatus {
         var request = URLRequest(url: latestReleaseAPIURL, timeoutInterval: 15)
         request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-        request.setValue("Safarier/\(currentVersion)", forHTTPHeaderField: "User-Agent")
+        request.setValue("Liubendou/\(currentVersion)", forHTTPHeaderField: "User-Agent")
         let (data, response) = try await load(request)
         if let http = response as? HTTPURLResponse, http.statusCode != 200 {
             throw UpdateCheckError.httpStatus(http.statusCode)
@@ -171,10 +171,10 @@ public enum UpdateChecker {
     }
 
     private static func isReleaseDownloadURL(_ url: URL) -> Bool {
-        url.scheme == "https" && url.host?.lowercased() == "github.com" && url.path.lowercased().hasPrefix("/cd1s/safarier/releases/download/") && !url.path.contains("..")
+        url.scheme == "https" && url.host?.lowercased() == "github.com" && url.path.lowercased().hasPrefix("/liubendou/liubendou-browser/releases/download/") && !url.path.contains("..")
     }
 
     private static func isRepositoryURL(_ url: URL) -> Bool {
-        url.scheme == "https" && url.host?.lowercased() == "github.com" && url.path.lowercased().hasPrefix("/cd1s/safarier/")
+        url.scheme == "https" && url.host?.lowercased() == "github.com" && url.path.lowercased().hasPrefix("/liubendou/liubendou-browser/")
     }
 }

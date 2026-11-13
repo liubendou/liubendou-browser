@@ -355,7 +355,7 @@ final class AgentBridgeTests: XCTestCase {
         let originalDate = try installed[0].resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
         _ = try AgentSkillGuide.install(homeDirectory: home)
         XCTAssertEqual(try installed[0].resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate, originalDate)
-        XCTAssertTrue(AgentSkillGuide.markdown.contains("/Applications/Safarier.app/Contents/MacOS/Safarier"))
+        XCTAssertTrue(AgentSkillGuide.markdown.contains("/Applications/六本豆.app/Contents/MacOS/Liubendou"))
         XCTAssertTrue(AgentSkillGuide.markdown.contains("agent focus"))
     }
 

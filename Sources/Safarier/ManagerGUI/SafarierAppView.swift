@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 import SafarierCore
 
@@ -18,6 +19,7 @@ struct SafarierAppView: View {
                 detail
             }
         }
+        .tint(Color(red: 0.10, green: 0.48, blue: 0.36))
         .sheet(item: $model.showingUpdateNotes) { release in
             UpdateNotesSheet(model: model, release: release)
         }
@@ -54,7 +56,7 @@ struct SafarierAppView: View {
                 Button { AboutAndUpdateController.openGitHub() } label: {
                     Label("查看 GitHub 项目", systemImage: "chevron.left.forwardslash.chevron.right")
                 }
-                .help("打开 Safarier 的 GitHub 项目页")
+                .help("打开 六本豆 的 GitHub 项目页")
             }
             ToolbarItem(placement: .primaryAction) {
                 Button { AboutAndUpdateController.checkForUpdates() } label: {
@@ -64,16 +66,16 @@ struct SafarierAppView: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Menu {
-                    Button("关于 Safarier") { AboutAndUpdateController.showAbout() }
+                    Button("关于 六本豆") { AboutAndUpdateController.showAbout() }
                     Button("检查更新…") { AboutAndUpdateController.checkForUpdates() }
                     Divider()
-                    Button("Safarier GitHub 主页") { AboutAndUpdateController.openGitHub() }
+                    Button("六本豆 GitHub 主页") { AboutAndUpdateController.openGitHub() }
                     Button("查看最新版本 (GitHub Releases)") { AboutAndUpdateController.openReleases() }
                 } label: {
                     Label("关于 / GitHub", systemImage: "info.circle")
                 }
                 .menuIndicator(.hidden)
-                .help("关于 Safarier、检查更新、打开 GitHub 页面")
+                .help("关于 六本豆、检查更新、打开 GitHub 页面")
             }
         }
         .onAppear { model.startMonitoring() }
@@ -300,6 +302,24 @@ struct ManagerSidebar: View {
             }
         }
         .listStyle(.sidebar)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            VStack(spacing: 0) {
+                HStack(spacing: 10) {
+                    Image(nsImage: NSApp.applicationIconImage)
+                        .resizable()
+                        .frame(width: 46, height: 46)
+                        .accessibilityHidden(true)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("六本豆").font(.system(size: 20, weight: .semibold))
+                        Text("多环境浏览器").font(.caption).foregroundStyle(.secondary)
+                    }
+                    Spacer(minLength: 0)
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 12)
+                Divider()
+            }
+        }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack(spacing: 0) {
                 Divider()

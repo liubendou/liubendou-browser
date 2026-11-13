@@ -44,8 +44,8 @@ final class BuildAppInfoPlistTests: XCTestCase {
         // 模板里的变量照常替换，其它键不受影响。
         XCTAssertEqual(info["CFBundleShortVersionString"] as? String, "9.9.9")
         XCTAssertEqual(info["CFBundleVersion"] as? String, "42")
-        XCTAssertEqual(info["CFBundleIdentifier"] as? String, "sh.safarier.app")
-        XCTAssertEqual(info["CFBundleExecutable"] as? String, "Safarier")
+        XCTAssertEqual(info["CFBundleIdentifier"] as? String, "com.liubendou.browser")
+        XCTAssertEqual(info["CFBundleExecutable"] as? String, "Liubendou")
     }
 
     /// 本机装着 Safari 时，它带的每一种语言（Resources 下的 .lproj，Base 除外）都要在声明里。

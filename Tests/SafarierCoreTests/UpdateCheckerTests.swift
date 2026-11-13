@@ -32,13 +32,13 @@ final class UpdateCheckerTests: XCTestCase {
 
     func testParseReleaseReadsGitHubFields() throws {
         let json = """
-        {"tag_name":"v1.3.0","name":"Safarier 1.3.0","body":"- 新增检查更新","html_url":"https://github.com/Cd1s/safarier/releases/tag/v1.3.0","draft":false}
+        {"tag_name":"v1.3.0","name":"Safarier 1.3.0","body":"- 新增检查更新","html_url":"https://github.com/liubendou/liubendou-browser/releases/tag/v1.3.0","draft":false}
         """
         let release = try UpdateChecker.parseRelease(from: Data(json.utf8))
         XCTAssertEqual(release.tagName, "v1.3.0")
         XCTAssertEqual(release.name, "Safarier 1.3.0")
         XCTAssertEqual(release.body, "- 新增检查更新")
-        XCTAssertEqual(release.htmlURL.absoluteString, "https://github.com/Cd1s/safarier/releases/tag/v1.3.0")
+        XCTAssertEqual(release.htmlURL.absoluteString, "https://github.com/liubendou/liubendou-browser/releases/tag/v1.3.0")
     }
 
     func testParseReleaseFallsBackWhenOptionalFieldsAreMissing() throws {
@@ -49,7 +49,7 @@ final class UpdateCheckerTests: XCTestCase {
     }
 
     func testParseReleaseIgnoresLinksOutsideTheRepository() throws {
-        for link in ["https://evil.example/releases", "http://github.com/Cd1s/safarier/releases/tag/v9", "https://github.com/other/repo/releases/tag/v9", "file:///etc/passwd"] {
+        for link in ["https://evil.example/releases", "http://github.com/liubendou/liubendou-browser/releases/tag/v9", "https://github.com/other/repo/releases/tag/v9", "file:///etc/passwd"] {
             let json = #"{"tag_name":"v9.0.0","html_url":"\#(link)"}"#
             XCTAssertEqual(try UpdateChecker.parseRelease(from: Data(json.utf8)).htmlURL, UpdateChecker.releasesURL, link)
         }
@@ -74,14 +74,14 @@ final class UpdateCheckerTests: XCTestCase {
     }
 
     func testCheckLatestUsesInjectedLoaderAndChecksStatus() async throws {
-        let body = Data(#"{"tag_name":"v1.10.0","html_url":"https://github.com/Cd1s/safarier/releases/tag/v1.10.0"}"#.utf8)
+        let body = Data(#"{"tag_name":"v1.10.0","html_url":"https://github.com/liubendou/liubendou-browser/releases/tag/v1.10.0"}"#.utf8)
         func response(_ code: Int, _ request: URLRequest) -> URLResponse {
             HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: nil)!
         }
 
         let status = try await UpdateChecker.checkLatest(currentVersion: "1.2.9") { request in
             XCTAssertEqual(request.url, UpdateChecker.latestReleaseAPIURL)
-            XCTAssertEqual(request.value(forHTTPHeaderField: "User-Agent"), "Safarier/1.2.9")
+            XCTAssertEqual(request.value(forHTTPHeaderField: "User-Agent"), "Liubendou/1.2.9")
             return (body, response(200, request))
         }
         guard case .updateAvailable(let current, let latest) = status else { return XCTFail("应提示有新版本：\(status)") }
@@ -97,13 +97,13 @@ final class UpdateCheckerTests: XCTestCase {
     }
 
     func testLinksPointAtTheRepository() {
-        XCTAssertEqual(UpdateChecker.repositoryURL.absoluteString, "https://github.com/Cd1s/safarier")
-        XCTAssertEqual(UpdateChecker.releasesURL.absoluteString, "https://github.com/Cd1s/safarier/releases/latest")
-        XCTAssertEqual(UpdateChecker.issuesURL.absoluteString, "https://github.com/Cd1s/safarier/issues")
-        XCTAssertEqual(UpdateChecker.latestReleaseAPIURL.absoluteString, "https://api.github.com/repos/Cd1s/safarier/releases/latest")
+        XCTAssertEqual(UpdateChecker.repositoryURL.absoluteString, "https://github.com/liubendou/liubendou-browser")
+        XCTAssertEqual(UpdateChecker.releasesURL.absoluteString, "https://github.com/liubendou/liubendou-browser/releases/latest")
+        XCTAssertEqual(UpdateChecker.issuesURL.absoluteString, "https://github.com/liubendou/liubendou-browser/issues")
+        XCTAssertEqual(UpdateChecker.latestReleaseAPIURL.absoluteString, "https://api.github.com/repos/liubendou/liubendou-browser/releases/latest")
     }
 
-    private let downloadBase = "https://github.com/Cd1s/safarier/releases/download/v1.3.0"
+    private let downloadBase = "https://github.com/liubendou/liubendou-browser/releases/download/v1.3.0"
 
     private func releaseJSON(assets: [(String, String)]) -> Data {
         let list = assets.map { #"{"name":"\#($0.0)","browser_download_url":"\#($0.1)"}"# }.joined(separator: ",")
@@ -123,11 +123,11 @@ final class UpdateCheckerTests: XCTestCase {
 
     func testParseReleaseDropsAssetsOutsideTheRepository() throws {
         let data = releaseJSON(assets: [
-            ("a.zip", "https://evil.example/Cd1s/safarier/releases/download/v1/a.zip"),
-            ("b.zip", "http://github.com/Cd1s/safarier/releases/download/v1/b.zip"),
+            ("a.zip", "https://evil.example/liubendou/liubendou-browser/releases/download/v1/a.zip"),
+            ("b.zip", "http://github.com/liubendou/liubendou-browser/releases/download/v1/b.zip"),
             ("c.zip", "https://github.com/other/repo/releases/download/v1/c.zip"),
-            ("d.zip", "https://github.com/Cd1s/safarier/archive/main.zip"),
-            ("e.zip", "https://github.com/Cd1s/safarier/releases/download/../../../evil/e.zip"),
+            ("d.zip", "https://github.com/liubendou/liubendou-browser/archive/main.zip"),
+            ("e.zip", "https://github.com/liubendou/liubendou-browser/releases/download/../../../evil/e.zip"),
             ("f.zip", "file:///tmp/f.zip"),
             ("ok.zip", "\(downloadBase)/ok.zip"),
         ])

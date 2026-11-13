@@ -1,0 +1,74 @@
+name: Build 六本豆 macOS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'Sources/**'
+      - 'Resources/**'
+      - 'Tests/**'
+      - 'scripts/**'
+      - 'Package.*'
+      - 'NOTICE.md'
+      - '.github/workflows/build-liubendou.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: liubendou-macos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      SAFARIER_VERSION: '1.5.0'
+      SAFARIER_ARCH: arm64
+      SAFARIER_BUILD: ${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: |
+          if [ -d /Applications/Xcode_26.2.app ]; then
+            sudo xcode-select -s /Applications/Xcode_26.2.app/Contents/Developer
+          fi
+          xcodebuild -version
+          swift --version
+      - name: Prepare verified proxy helpers
+        run: python3 scripts/prepare-helpers.py
+      - name: Run affected test suites
+        run: |
+          set -o pipefail
+          swift test --filter 'BuildAppInfoPlistTests|UpdateCheckerTests|DownloadQuarantineTests|StartPageTests|AgentBridgeTests|UILanguageTests|SingboxProcessManagerTests' 2>&1 | tee test-results.log
+      - name: Build and sign 六本豆
+        run: bash scripts/build-app.sh
+      - name: Verify bundle and CLI
+        run: |
+          codesign --verify --deep --strict 'dist/六本豆.app'
+          python3 scripts/verify-branding.py 'dist/六本豆.app'
+          'dist/六本豆.app/Contents/MacOS/Liubendou' profile list
+          'dist/六本豆.app/Contents/MacOS/Liubendou' device list > /dev/null
+      - name: Package app
+        run: |
+          cd dist
+          ditto -c -k --sequesterRsrc --keepParent '六本豆.app' '六本豆-v1.5.0-macOS-arm64.zip'
+          shasum -a 256 '六本豆-v1.5.0-macOS-arm64.zip' > '六本豆-v1.5.0-macOS-arm64.zip.sha256'
+      - name: Upload app
+        uses: actions/upload-artifact@v4
+        with:
+          name: Liubendou-v1.5.0-macOS-arm64
+          path: |
+            dist/*.zip
+            dist/*.sha256
+          retention-days: 30
+          if-no-files-found: error
+      - name: Upload test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output
+          path: test-results.log
+          retention-days: 7
