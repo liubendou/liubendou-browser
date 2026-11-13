@@ -42,7 +42,7 @@ jobs:
       - name: Run affected test suites
         run: |
           set -o pipefail
-          swift test --filter 'BuildAppInfoPlistTests|UpdateCheckerTests|DownloadQuarantineTests|StartPageTests|AgentBridgeTests|UILanguageTests|SingboxProcessManagerTests' 2>&1 | tee test-results.log
+          swift test --filter 'BuildAppInfoPlistTests|LocalizationCoverageTests|UpdateCheckerTests|DownloadQuarantineTests|StartPageTests|AgentBridgeTests|UILanguageTests|SingboxProcessManagerTests' 2>&1 | tee test-results.log
       - name: Build and sign 六本豆
         run: bash scripts/build-app.sh
       - name: Verify bundle and CLI

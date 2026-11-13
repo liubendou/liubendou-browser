@@ -56,7 +56,7 @@ enum ManagerCLI {
     profile clone：复制全部设置到新环境（新 ID，不复制 Cookie 等网站数据），默认名字加「副本」。
     前置连接：本机 → 前置代理/节点 → 当前代理 → 网站。仅支持两跳；--upstream-proxy none 清除前置。
            自定义前置从文件读取单个 sing-box 出站 JSON，避免认证信息出现在命令行参数中。
-    环境变量 SAFARIER_HOME 可覆盖元数据目录（默认 ~/Library/Application Support/Safarier）。
+    环境变量 SAFARIER_HOME 可覆盖元数据目录（默认系统 Application Support 目录）。
     """)
 
     static func run(_ arguments: [String]) -> Int32 {
