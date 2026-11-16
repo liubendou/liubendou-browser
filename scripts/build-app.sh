@@ -134,6 +134,7 @@ printf 'APPL????' > "$APP/Contents/PkgInfo"
 cp "$SINGBOX_DIR/LICENSE" "$SINGBOX_DIR/COPYING" "$SINGBOX_DIR/SOURCE" "$APP/Contents/Resources/ThirdParty/sing-box/"
 cp "$MIERU_DIR/LICENSE" "$MIERU_DIR/SOURCE" "$APP/Contents/Resources/ThirdParty/mieru/"
 cp "$ROOT/NOTICE.md" "$APP/Contents/Resources/ThirdParty/NOTICE.md"
+cp "$ROOT/LICENSE" "$APP/Contents/Resources/ThirdParty/LICENSE.txt"
 mkdir -p "$APP/Contents/Resources/ThirdParty/Yams"
 cp "$ROOT/.build/checkouts/Yams/LICENSE" "$APP/Contents/Resources/ThirdParty/Yams/"
 

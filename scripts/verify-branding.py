@@ -23,4 +23,6 @@ binary = (contents / 'MacOS' / 'Liubendou').read_bytes()
 assert b'https://api.github.com/repos/liubendou/liubendou-browser/releases/latest' in binary
 assert b'https://api.github.com/repos/Cd1s/safarier/releases/latest' not in binary
 assert (contents / 'Resources' / 'ThirdParty' / 'NOTICE.md').is_file()
+license_text = (contents / 'Resources' / 'ThirdParty' / 'LICENSE.txt').read_text(encoding='utf-8')
+assert license_text.startswith('MIT License')
 print('Verified 六本豆 identity, Chinese/English branding, icon, update destination and notices.')
